@@ -3,3 +3,6 @@ presidio-analyzer
 spacy
 faker
 phonenumbers
+fastapi
+python-multipart
+uvicorn
