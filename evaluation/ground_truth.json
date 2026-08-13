@@ -1,0 +1,216 @@
+{
+  "description": "Manually curated representative gold set from the supplied Red Herring Prospectus.",
+  "scope": "Required PII categories present in the document; corporate identifiers, dates and financial figures are out of scope unless they match a required PII type.",
+  "positive_examples": [
+    {
+      "text": "Kushal Subbayya Hegde",
+      "type": "PERSON"
+    },
+    {
+      "text": "Pushpa Kushal Hegde",
+      "type": "PERSON"
+    },
+    {
+      "text": "Rajesh Kushal Hegde",
+      "type": "PERSON"
+    },
+    {
+      "text": "Rohit Kushal Hegde",
+      "type": "PERSON"
+    },
+    {
+      "text": "Rakhi Girija Shetty",
+      "type": "PERSON"
+    },
+    {
+      "text": "Sarthak Malvadkar",
+      "type": "PERSON"
+    },
+    {
+      "text": "Sandesh Bhagwat",
+      "type": "PERSON"
+    },
+    {
+      "text": "Amod Joshi",
+      "type": "PERSON"
+    },
+    {
+      "text": "Dinesh Hirachand Munot",
+      "type": "PERSON"
+    },
+    {
+      "text": "Ajay Shriram Patil",
+      "type": "PERSON"
+    },
+    {
+      "text": "cs.connect@kshinternational.com",
+      "type": "EMAIL_ADDRESS"
+    },
+    {
+      "text": "Sarthak.malvadkar@kshinterantional.com",
+      "type": "EMAIL_ADDRESS"
+    },
+    {
+      "text": "ksh.ipo@nuvama.com",
+      "type": "EMAIL_ADDRESS"
+    },
+    {
+      "text": "customerservice.mb@nuvama.com",
+      "type": "EMAIL_ADDRESS"
+    },
+    {
+      "text": "ksh@icicisecurities.com",
+      "type": "EMAIL_ADDRESS"
+    },
+    {
+      "text": "customercare@icicisecurities.com",
+      "type": "EMAIL_ADDRESS"
+    },
+    {
+      "text": "kshinternational.ipo@in.mpms.mufg.com",
+      "type": "EMAIL_ADDRESS"
+    },
+    {
+      "text": "parag.pansare@kirtanepandit.com",
+      "type": "EMAIL_ADDRESS"
+    },
+    {
+      "text": "hingnetare@gmail.com",
+      "type": "EMAIL_ADDRESS"
+    },
+    {
+      "text": "prakash.boricha@nuvama.com",
+      "type": "EMAIL_ADDRESS"
+    },
+    {
+      "text": "+ 91 20 45053237",
+      "type": "PHONE_NUMBER"
+    },
+    {
+      "text": "+91 22 40094400",
+      "type": "PHONE_NUMBER"
+    },
+    {
+      "text": "+91 22 6807 7100",
+      "type": "PHONE_NUMBER"
+    },
+    {
+      "text": "+91 81081 14949",
+      "type": "PHONE_NUMBER"
+    },
+    {
+      "text": "+ 91 20 6729 5100",
+      "type": "PHONE_NUMBER"
+    },
+    {
+      "text": "+91 22 30752929",
+      "type": "PHONE_NUMBER"
+    },
+    {
+      "text": "+91 22 30752928",
+      "type": "PHONE_NUMBER"
+    },
+    {
+      "text": "+91 22 30752914",
+      "type": "PHONE_NUMBER"
+    },
+    {
+      "text": "KSH International Limited",
+      "type": "ORGANIZATION"
+    },
+    {
+      "text": "Nuvama Wealth Management Limited",
+      "type": "ORGANIZATION"
+    },
+    {
+      "text": "ICICI Securities Limited",
+      "type": "ORGANIZATION"
+    },
+    {
+      "text": "MUFG Intime India Private Limited",
+      "type": "ORGANIZATION"
+    },
+    {
+      "text": "Kirtane & Pandit, LLP",
+      "type": "ORGANIZATION"
+    },
+    {
+      "text": "CARE Analytics and Advisory Private Limited",
+      "type": "ORGANIZATION"
+    },
+    {
+      "text": "Waterloo Industrial Park VI Private Limited",
+      "type": "ORGANIZATION"
+    },
+    {
+      "text": "KSH Project Management Services Private Limited",
+      "type": "ORGANIZATION"
+    },
+    {
+      "text": "KSH Infra Park VI Private Limited",
+      "type": "ORGANIZATION"
+    },
+    {
+      "text": "KSH Integrated Logistics Private Limited",
+      "type": "ORGANIZATION"
+    },
+    {
+      "text": "11/3, 11/4 and 11/5, Village Birdewadi, Chakan Taluka - Khed, Pune – 410 501, Maharashtra, India",
+      "type": "ADDRESS"
+    },
+    {
+      "text": "201, Tower 2, Montreal Business Centre, Off Pallod Farms, Baner, Pune – 411 045, Maharashtra, India",
+      "type": "ADDRESS"
+    },
+    {
+      "text": "801 - 804, Wing A, Building No 3, Inspire BKC, G Block, Bandra Kurla Complex, Bandra East, Mumbai 400051, Maharashtra, India",
+      "type": "ADDRESS"
+    },
+    {
+      "text": "ICICI Venture House, Appasaheb Marathe Marg, Prabhadevi, Mumbai 400025, Maharashtra, India",
+      "type": "ADDRESS"
+    },
+    {
+      "text": "C-101, Embassy 247, 1st Floor, L B S Marg, Vikhroli (West), Mumbai 400083, Maharashtra, India",
+      "type": "ADDRESS"
+    },
+    {
+      "text": "5th Floor, Wing A, Gopal House, S. No. 127/1B/1, Plot A1 Opp Harshal Hall Kothrud, Pune – 411 038, Maharashtra, India",
+      "type": "ADDRESS"
+    }
+  ],
+  "negative_examples": [
+    {
+      "text": "2025",
+      "type": "NON_PII"
+    },
+    {
+      "text": "December 10, 2025",
+      "type": "NON_PII"
+    },
+    {
+      "text": "India",
+      "type": "NON_PII"
+    },
+    {
+      "text": "Pune",
+      "type": "NON_PII"
+    },
+    {
+      "text": "U28129PN1979PLC141032",
+      "type": "NON_PII"
+    },
+    {
+      "text": "00135070",
+      "type": "NON_PII"
+    },
+    {
+      "text": "INM000013004",
+      "type": "NON_PII"
+    },
+    {
+      "text": "₹4,200.00 million",
+      "type": "NON_PII"
+    }
+  ]
+}
