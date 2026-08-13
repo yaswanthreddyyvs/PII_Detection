@@ -1,6 +1,7 @@
 from typing import List
 
 from presidio_analyzer import AnalyzerEngine
+from presidio_analyzer.nlp_engine import NlpEngineProvider
 
 from models import PIIDetection
 
@@ -21,7 +22,26 @@ class PIIDetector:
     MIN_CONFIDENCE = 0.70
 
     def __init__(self) -> None:
-        self.analyzer = AnalyzerEngine()
+        configuration = {
+            "nlp_engine_name": "spacy",
+            "models": [
+                {
+                    "lang_code": "en",
+                    "model_name": "en_core_web_sm",
+                }
+            ],
+        }
+
+        provider = NlpEngineProvider(
+            nlp_configuration=configuration
+        )
+
+        nlp_engine = provider.create_engine()
+
+        self.analyzer = AnalyzerEngine(
+            nlp_engine=nlp_engine,
+            supported_languages=["en"],
+        )
 
     def detect(self, text: str) -> List[PIIDetection]:
         results = self.analyzer.analyze(
