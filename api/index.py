@@ -3,9 +3,8 @@ from pathlib import Path
 from tempfile import NamedTemporaryFile
 
 from fastapi import FastAPI, File, UploadFile
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, HTMLResponse
 
-# Project root
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 SRC_DIR = PROJECT_ROOT / "src"
 
@@ -19,23 +18,157 @@ from replacement.replacer import PIIReplacer
 
 app = FastAPI(
     title="PII Redaction Tool",
-    description="API for detecting and redacting PII from DOCX documents.",
+    description="Detect and redact PII from DOCX documents.",
     version="1.0.0",
 )
 
 
-@app.get("/")
+HTML_PAGE = """
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PII Redaction Tool</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 80px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .upload-box {
+            border: 2px dashed #aaa;
+            padding: 35px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        input[type="file"] {
+            margin: 15px;
+        }
+
+        button {
+            background: #111827;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #374151;
+        }
+
+        .features {
+            margin-top: 30px;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-size: 13px;
+            color: #888;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>PII Redaction Tool</h1>
+
+    <p class="subtitle">
+        Detect and replace personally identifiable information
+        from DOCX documents with synthetic values.
+    </p>
+
+    <form
+        action="/api/redact"
+        method="post"
+        enctype="multipart/form-data"
+    >
+
+        <div class="upload-box">
+
+            <strong>Upload a DOCX document</strong>
+
+            <br>
+
+            <input
+                type="file"
+                name="file"
+                accept=".docx"
+                required
+            >
+
+            <br>
+
+            <button type="submit">
+                Redact PII
+            </button>
+
+        </div>
+
+    </form>
+
+    <div class="features">
+
+        <strong>Supported PII types</strong>
+
+        <br>
+
+        Names • Emails • Phone Numbers • Organizations
+        • Addresses • SSNs • Credit Cards • DOB • IP Addresses
+
+    </div>
+
+    <div class="footer">
+
+        Hybrid detection using Microsoft Presidio,
+        custom rules and synthetic replacement.
+
+    </div>
+
+</div>
+
+</body>
+</html>
+"""
+
+
+@app.get("/", response_class=HTMLResponse)
 def home():
-    return {
-        "message": "PII Redaction Tool API",
-        "status": "running",
-    }
+    return HTML_PAGE
 
 
 @app.get("/health")
 def health():
     return {
-        "status": "healthy",
+        "status": "healthy"
     }
 
 
@@ -62,10 +195,9 @@ async def redact_document(
             delete=False,
         )
 
-        input_file.write(
-            await file.read()
-        )
+        content = await file.read()
 
+        input_file.write(content)
         input_file.close()
 
         output_file = NamedTemporaryFile(
